@@ -34,7 +34,7 @@ export default function Guide(props: propstype) {
               </tr>
             ))}
           </tbody>
-        </table>
+          </table>
       )}
     </>
   );

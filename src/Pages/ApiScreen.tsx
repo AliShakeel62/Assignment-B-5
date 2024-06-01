@@ -18,11 +18,53 @@ export default function APIhandel() {
         console.log(err, "Error");
       });
   };
+  const postdata = ()=>{
+    axios.post('https://jsonplaceholder.typicode.com/todos',{
+      userId:1,
+      title:'Ali',
+      completed:true
+    }).then((res)=>{
+      console.log(res,"Succesfull")
+    })
+      .catch((err)=>{ 
+        console.log(err,"Error")
+      }
+        
+      )}
+      const putdata = ()=>{
+        axios.put('https://jsonplaceholder.typicode.com/todos/1',{
+          userId:1,
+          title:'Ali',
+          completed:true
+        }).then((res)=>{
+          console.log(res,"Succesfull")
+        })
+          .catch((err)=>{ 
+            console.log(err,"Error")
+          }
+            
+          )
+        }    
+
+        const deldata = ()=>{
+          axios.delete('https://jsonplaceholder.typicode.com/todos/1').then((res)=>{
+            console.log(res,"Succesfull")
+          })
+            .catch((err)=>{ 
+              console.log(err,"Error")
+            }
+              
+            )
+          }    
+  
   return (
     <Box>
       <Button onClick={getapi} sx={{ margin: 1 }} variant="outlined">
         Get Data
       </Button>
+      <Button onClick={postdata}  variant="outlined">Post</Button>
+      <Button onClick={putdata}  variant="outlined">Put</Button>
+      <Button onClick={deldata}  variant="outlined">Delete</Button>
       <Guide
         usedata={uselist}
       loading={dataloader}
@@ -52,7 +94,6 @@ export default function APIhandel() {
             label:"Delete",
             displayfield:(row:any)=>(<Button variant="contained" onClick={()=>{
               console.log(row)
-              row["name"]=""
           }} >Delete</Button>)
           }
         ]}
